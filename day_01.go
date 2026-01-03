@@ -24,11 +24,15 @@ func main() {
 	// Check your date of birth (Using only single words/digits with Scan)
 	age := calculate_age()
 
-	//Create a profit calulator
+	// Create a profit calulator
 	// profitCalculator()
 
-	var introduction = fmt.Sprintf("Hello, My name is Shashi Bhagat and I am %d years old. I am learning Go Language.", age)
-	fmt.Println(introduction)
+	var introductionV1 string = fmt.Sprintf("Hello, My name is Shashi Bhagat and I am %d years old. I am learning Go Language.", age)
+	// Multitile string using backticks
+	var introductionV2 string = fmt.Sprintf(`%v
+I am a Software Engineer with 7+ years of working experiences.`, introductionV1)
+	fmt.Println(introductionV1, introductionV2)
+
 }
 
 func calculate_age() int {
