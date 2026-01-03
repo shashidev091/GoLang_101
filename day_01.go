@@ -33,6 +33,9 @@ func main() {
 I am a Software Engineer with 7+ years of working experiences.`, introductionV1)
 	fmt.Println(introductionV1, introductionV2)
 
+	value := add(10, 200000000999)
+	fmt.Println(value)
+
 }
 
 func calculate_age() int {
@@ -72,4 +75,8 @@ func profitCalculator() {
 	// fmt.Println(ratio)
 
 	fmt.Printf("Your ebt is: %v.\nYour profit is: %v.\nYour ratio is : %.2f.", ebt, profit, ratio)
+}
+
+func add(a int, b int) int {
+	return a + b
 }
