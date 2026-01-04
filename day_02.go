@@ -1,9 +1,13 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
+	"strconv"
 )
+
+const accountBalanceFile string = "balance.txt"
 
 func DayTwo() {
 	fmt.Println("This is Day 2 of Go Bootcamp!")
@@ -15,6 +19,9 @@ func DayTwo() {
 		fmt.Print("Enter your option and press enter: ")
 		var option int
 		fmt.Scan(&option)
+		if option == 5 {
+			break
+		}
 		switchCase(option)
 	}
 }
@@ -75,7 +82,24 @@ func drawRightAngleTriangleReverse(number int) {
 
 func writeBalanceToFile(balance float64) {
 	balanceText := fmt.Sprint(balance)
-	os.WriteFile("balance.txt", []byte(balanceText), 0644)
+	os.WriteFile(accountBalanceFile, []byte(balanceText), 0644)
+}
+
+func readBalanceFromFile() (float64, error) {
+	defaultValue := 10000.00
+	data, err := os.ReadFile(accountBalanceFile)
+
+	if err != nil {
+		return defaultValue, errors.New("Failed to read the file.")
+	}
+	balanceText := string(data)
+	balance, err := strconv.ParseFloat(balanceText, 64)
+
+	if err != nil {
+		return defaultValue, errors.New("Failed to parse the float value.")
+	}
+
+	return balance, nil
 }
 
 func switchCase(choice int) {
@@ -94,7 +118,14 @@ func switchCase(choice int) {
 		drawRightAngleTriangleReverse(5)
 		fmt.Println("================END==================")
 	case 4:
-		accountBalance := 10000.0
+		accountBalance, err := readBalanceFromFile()
+
+		if err != nil {
+			fmt.Println("ERROR==============>")
+			fmt.Println(err)
+			fmt.Println("===================>")
+		}
+
 		for {
 			fmt.Println("What do you want to do?")
 			fmt.Println("1. Check balance")
@@ -147,6 +178,8 @@ func switchCase(choice int) {
 			}
 		}
 	default:
-		fmt.Println("Wrong Input")
+		fmt.Println("Goodbye!")
+		fmt.Println("Thanks for banking with us.")
+		return
 	}
 }
