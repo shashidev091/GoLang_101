@@ -32,6 +32,44 @@ func findPrimeNumbers(number int) {
 	}
 }
 
+func drawTriangle(number int) {
+	for i := 0; i <= number; i++ {
+		for j := number; j <= 0; j-- {
+			fmt.Print(" ")
+		}
+		for j := 0; j <= i; j++ {
+			fmt.Print("*")
+		}
+		fmt.Println()
+	}
+}
+
+func drawRightAngleTriangle() {
+	var patternSymbol string
+	fmt.Println("You choosed to print the star pattern")
+	fmt.Print("Choose your symbol to be used to generate start pattern. For example (*, #, emoji...):  ")
+	fmt.Scan(&patternSymbol)
+	for i := 0; i <= 5; i++ {
+		for j := 0; j <= i; j++ {
+			fmt.Print(patternSymbol)
+		}
+		fmt.Println()
+	}
+}
+
+func drawRightAngleTriangleReverse(number int) {
+	var patternSymbol string
+	fmt.Println("You choosed to print the star pattern of reverse right angle triangle.")
+	fmt.Print("Choose your symbol to be used to generate start pattern. For example (*, #, emoji...):  ")
+	fmt.Scan(&patternSymbol)
+	for i := 0; i <= number; i++ {
+		for j := number; j >= i; j-- {
+			fmt.Print(patternSymbol)
+		}
+		fmt.Println()
+	}
+}
+
 func switchCase(choice int) {
 	switch choice {
 	case 1:
@@ -42,16 +80,10 @@ func switchCase(choice int) {
 		findPrimeNumbers(askedNumber)
 		fmt.Println("================END==================")
 	case 2:
-		var patternSymbol string
-		fmt.Println("You choosed to print the star pattern")
-		fmt.Print("Choose your symbol to be used to generate start pattern. For example (*, #, emoji...):  ")
-		fmt.Scan(&patternSymbol)
-		for i := 0; i <= 5; i++ {
-			for j := 0; j <= i; j++ {
-				fmt.Print(patternSymbol)
-			}
-			fmt.Println()
-		}
+		drawRightAngleTriangle()
+		fmt.Println("================END==================")
+	case 3:
+		drawRightAngleTriangleReverse(5)
 		fmt.Println("================END==================")
 	default:
 		fmt.Println("Wrong Input")
