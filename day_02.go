@@ -124,6 +124,8 @@ func switchCase(choice int) {
 			fmt.Println("ERROR==============>")
 			fmt.Println(err)
 			fmt.Println("===================>")
+			// If you want to crash the application use default function panic("----")
+			panic("Can't continue the code further since there is not file.")
 		}
 
 		for {
