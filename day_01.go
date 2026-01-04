@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func main() {
+func dayOne() {
 	fmt.Println("Hello, Shashi 🌚")
 	// var investmentAmount int = 1000
 	// var expectedReturnRate float64 = 5.5
