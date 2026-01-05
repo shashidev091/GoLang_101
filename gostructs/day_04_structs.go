@@ -46,6 +46,10 @@ func GoStructsMain() {
 	// }
 
 	// appUser2 = User{} => This will create a nil value of the object/struct
+
+	var appUser3 *User
+	appUser3 = newUser("Rabita", "Lakra", "13/01/1997", 27)
+	appUser3.outputUserDetails()
 }
 
 func getUserData(promptText string) string {
@@ -109,4 +113,16 @@ func printUserDetailsPointers(user *User) {
 	// 	fmt.Println((*user).birthDate)
 	// 	fmt.Println((*user).age)
 	// 	fmt.Println((*user).createdAt)
+}
+
+// An utility function to create struct, please follow the naming convention which starts with new____.
+// Returning as pointer to prevent sending copy
+func newUser(firstName string, lastName string, birthDate string, age int) *User {
+	return &User{
+		firstName: firstName,
+		lastName:  lastName,
+		age:       age,
+		birthDate: birthDate,
+		createdAt: time.Now(),
+	}
 }
