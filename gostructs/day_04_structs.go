@@ -27,6 +27,13 @@ func GoStructsMain() {
 	printUserDetails(appUser)
 	printUserDetailsPointers(&appUser)
 
+	// Using attched methods
+	appUser.outputUserDetails()
+
+	// Manupulating struct variables
+	appUser.clearUserName()
+	appUser.outputUserDetails()
+
 	//or you can omit the struct keys and give the data in the same squence.
 
 	// var appUser2 User
@@ -59,6 +66,25 @@ type User struct {
 	createdAt time.Time
 	firstName string
 	lastName  string
+}
+
+// Attaching a function to a struct
+//
+//	Receiver argument
+func (user User) outputUserDetails() {
+	fmt.Println("============Struct attached function =================")
+	fmt.Println(user.firstName)
+	fmt.Println(user.lastName)
+	fmt.Println(user.birthDate)
+	fmt.Println(user.age)
+	fmt.Println(user.createdAt)
+}
+
+// To maupulate the variables in the struct you should always pass the pointer so that orignal struct is passed not the copy.
+func (user *User) clearUserName() {
+	fmt.Println("Clearing the firstName and Lastname ==================> ")
+	user.firstName = ""
+	user.lastName = ""
 }
 
 func printUserDetails(user User) {
