@@ -11,4 +11,6 @@ func day_three() {
 	const accountBalanceFile string = "balance.txt"
 	balance, _ := utils.ReadFloatFromFile(accountBalanceFile)
 	fmt.Println(balance)
+
+	utils.UtilsMain()
 }

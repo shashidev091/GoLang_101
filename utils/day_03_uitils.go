@@ -28,3 +28,7 @@ func ReadFloatFromFile(fileName string) (float64, error) {
 
 	return resultVal, nil
 }
+
+func UtilsMain() {
+	pointerMain()
+}
