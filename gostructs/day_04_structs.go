@@ -23,6 +23,10 @@ func GoStructsMain() {
 		createdAt: time.Now(),
 	}
 
+	fmt.Println(appUser.firstName, appUser.lastName)
+	printUserDetails(appUser)
+	printUserDetailsPointers(&appUser)
+
 	//or you can omit the struct keys and give the data in the same squence.
 
 	// var appUser2 User
@@ -55,4 +59,28 @@ type User struct {
 	createdAt time.Time
 	firstName string
 	lastName  string
+}
+
+func printUserDetails(user User) {
+	fmt.Println(user.firstName)
+	fmt.Println(user.lastName)
+	fmt.Println(user.birthDate)
+	fmt.Println(user.age)
+	fmt.Println(user.createdAt)
+}
+
+func printUserDetailsPointers(user *User) {
+	// it works directly without derefencing
+	fmt.Println(user.firstName)
+	fmt.Println(user.lastName)
+	fmt.Println(user.birthDate)
+	fmt.Println(user.age)
+	fmt.Println(user.createdAt)
+
+	// although this is the way it should have if go did not have created the shortcut.
+	// 	fmt.Println((*user).firstName)
+	// 	fmt.Println((*user).lastName)
+	// 	fmt.Println((*user).birthDate)
+	// 	fmt.Println((*user).age)
+	// 	fmt.Println((*user).createdAt)
 }
