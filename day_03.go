@@ -24,4 +24,7 @@ func day_three() {
 
 	appUser.OutputUserDetails()
 
+	admin := user.NewAdmin("SomeEmail@somedomain.com", "s0mep@ssworD")
+	admin.OutputUserDetails()
+
 }

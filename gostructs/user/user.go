@@ -14,6 +14,13 @@ type User struct {
 	LastName  string
 }
 
+// Embedding: you can assume it is like extending the class
+type Admin struct {
+	email    string
+	password string
+	User     // This line does the trick. here we are using anonymous decalration
+}
+
 // Attaching a function to a struct
 //
 //	Receiver argument
@@ -54,4 +61,19 @@ func New(firstName string, lastName string, birthDate string, age int) (*User, e
 		BirthDate: birthDate,
 		createdAt: time.Now(),
 	}, nil
+}
+
+// Contruction function for Admin
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		email:    email,
+		password: password,
+		User: User{
+			FirstName: "Mango",
+			LastName:  "Orange",
+			BirthDate: "02/01/2025",
+			Age:       3,
+			createdAt: time.Now(),
+		},
+	}
 }
