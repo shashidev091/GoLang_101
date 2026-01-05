@@ -1,6 +1,7 @@
 package gostructs
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -50,12 +51,21 @@ func GoStructsMain() {
 	var appUser3 *User
 	appUser3 = newUser("Rabita", "Lakra", "13/01/1997", 27)
 	appUser3.outputUserDetails()
+	var appUser4 *User
+	appUser4, err := newUserV2("Sabita", "Lakra", "15/01/2000", 25)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	appUser4.outputUserDetails()
+
 }
 
 func getUserData(promptText string) string {
 	var userInput string
 	fmt.Print(promptText)
-	_, err := fmt.Scan(&userInput)
+	_, err := fmt.Scanln(&userInput)
 	if err != nil {
 		panic("Invalid input")
 	}
@@ -125,4 +135,17 @@ func newUser(firstName string, lastName string, birthDate string, age int) *User
 		birthDate: birthDate,
 		createdAt: time.Now(),
 	}
+}
+
+func newUserV2(firstName string, lastName string, birthDate string, age int) (*User, error) {
+	if firstName == "" || lastName == "" || birthDate == "" {
+		return nil, errors.New("First name, Last name and birthdate are required parameters.")
+	}
+	return &User{
+		firstName: firstName,
+		lastName:  lastName,
+		age:       age,
+		birthDate: birthDate,
+		createdAt: time.Now(),
+	}, nil
 }
