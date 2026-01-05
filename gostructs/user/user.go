@@ -43,7 +43,7 @@ func NewUser(firstName string, lastName string, birthDate string, age int) *User
 	}
 }
 
-func NewUserV2(firstName string, lastName string, birthDate string, age int) (*User, error) {
+func New(firstName string, lastName string, birthDate string, age int) (*User, error) {
 	if firstName == "" || lastName == "" || birthDate == "" {
 		return nil, errors.New("First name, Last name and birthdate are required parameters.")
 	}

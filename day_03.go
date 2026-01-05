@@ -16,7 +16,7 @@ func day_three() {
 	// utils.UtilsMain()
 	gostructs.GoStructsMain()
 	var appUser *user.User
-	appUser, err := user.NewUserV2("Shashi", "Bhagat", "20/04/1994", 31)
+	appUser, err := user.New("Shashi", "Bhagat", "20/04/1994", 31)
 
 	if err != nil {
 		fmt.Println(err)
