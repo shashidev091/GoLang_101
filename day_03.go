@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/shashidev091/GoLang_101/day_03/gostructs"
-	"github.com/shashidev091/GoLang_101/day_03/gostructs/user"
+	"github.com/shashidev091/GoLang_101/day_04/gostructs"
+	"github.com/shashidev091/GoLang_101/day_04/gostructs/user"
 )
 
 func day_three() {
