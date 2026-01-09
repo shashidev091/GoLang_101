@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/shashidev091/GoLang_101/day_04/note"
+)
 
 //Types
 
@@ -16,4 +20,16 @@ func Day05Main() {
 
 	// TO use the explicit type we have to declare and use the explicit type
 	name.log()
+
+	title, content := getNoteData()
+
+	userNote, err := note.New(title, content)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	userNote.DisplayNote()
+
 }
