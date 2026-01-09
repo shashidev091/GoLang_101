@@ -51,6 +51,33 @@ func (person Person) outputPersonDetails() {
 	fmt.Println(person.address.state)
 	fmt.Println(person.address.pincode)
 	fmt.Println(person.address.mobileNumber)
+	fmt.Println("===================================")
+}
+
+// Creating constructors, Go uses prefers all constructor names should start with New[StructName]
+// For nested thing we should always go for inner one first.
+
+func NewAddress(empVill string, empCity string, empStreet string, empPlotNumber string, empState string, empPincode int, empMobileNumber string) *Address {
+	return &Address{
+		village:      empVill,
+		city:         empCity,
+		street:       empStreet,
+		plotNumber:   empPlotNumber,
+		state:        empState,
+		pincode:      empPincode,
+		mobileNumber: empMobileNumber,
+	}
+}
+
+func NewPerson(empFirstName string, empLastName string, empAge int, empEarning float64, empAddress Address) Person {
+	return Person{
+		firstName: empFirstName,
+		lastName:  empLastName,
+		age:       empAge,
+		earning:   empEarning,
+		address:   empAddress,
+		createdAt: time.Now(),
+	}
 }
 
 func day04Main() {
