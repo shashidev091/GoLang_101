@@ -19,7 +19,7 @@ type Person struct {
 	lastName  string
 	age       int
 	earning   float64
-	address   Address
+	address   *Address
 	createdAt time.Time
 }
 
@@ -69,7 +69,7 @@ func NewAddress(empVill string, empCity string, empStreet string, empPlotNumber 
 	}
 }
 
-func NewPerson(empFirstName string, empLastName string, empAge int, empEarning float64, empAddress Address) Person {
+func NewPerson(empFirstName string, empLastName string, empAge int, empEarning float64, empAddress *Address) Person {
 	return Person{
 		firstName: empFirstName,
 		lastName:  empLastName,
@@ -94,8 +94,8 @@ func day04Main() {
 	empPincode := 835208
 	empMobileNumber := "9931920057"
 
-	var empAddress Address
-	empAddress = Address{
+	var empAddress *Address
+	empAddress = &Address{
 		village:      empVill,
 		city:         empCity,
 		street:       empStreet,
