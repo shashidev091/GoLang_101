@@ -120,4 +120,24 @@ func day04Main() {
 	employee.updatePerson("Bablu", "", -1, 1000.99)
 	employee.outputPersonDetails()
 
+	//Constructor examples
+	empFirstName2 := "Rabita"
+	empLastName2 := "Lakra"
+	empAge2 := 27
+	empEarning2 := 1800000.00
+
+	empVill2 := "Ghaghra"
+	empStreet2 := "College Road"
+	empCity2 := "Gumla"
+	empPlotNumber2 := "376A"
+	empState2 := "Jharkhand"
+	empPincode2 := 835208
+	empMobileNumber2 := "8340299080"
+
+	var secondAddress *Address
+	var secondPerson Person
+	secondAddress = NewAddress(empVill2, empCity2, empStreet2, empPlotNumber2, empState2, empPincode2, empMobileNumber2)
+	secondPerson = NewPerson(empFirstName2, empLastName2, empAge2, empEarning2, secondAddress)
+	// fmt.Println(secondPerson)
+	secondPerson.outputPersonDetails()
 }
