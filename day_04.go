@@ -23,6 +23,13 @@ type Person struct {
 	createdAt time.Time
 }
 
+// Embedding
+type Admin struct {
+	email    string
+	password string
+	Person
+}
+
 func (person *Person) updatePerson(fName string, lName string, pAge int, pEarning float64) {
 	if fName != "" {
 		person.firstName = fName
@@ -54,6 +61,12 @@ func (person Person) outputPersonDetails() {
 	fmt.Println("===================================")
 }
 
+func (admin Admin) outputAdminDetails() {
+	admin.outputPersonDetails()
+	fmt.Println(admin.email)
+	fmt.Println(admin.password)
+}
+
 // Creating constructors, Go uses prefers all constructor names should start with New[StructName]
 // For nested thing we should always go for inner one first.
 
@@ -77,6 +90,14 @@ func NewPerson(empFirstName string, empLastName string, empAge int, empEarning f
 		earning:   empEarning,
 		address:   empAddress,
 		createdAt: time.Now(),
+	}
+}
+
+func NewAdmin(email string, password string, person Person) Admin {
+	return Admin{
+		email:    email,
+		password: password,
+		Person:   person,
 	}
 }
 
@@ -140,4 +161,10 @@ func day04Main() {
 	secondPerson = NewPerson(empFirstName2, empLastName2, empAge2, empEarning2, secondAddress)
 	// fmt.Println(secondPerson)
 	secondPerson.outputPersonDetails()
+	// admin := NewAdmin("skujur871@gmail.com", "SomeP@ss1")
+	// fmt.Println(admin.age)
+
+	var admin Admin
+	admin = NewAdmin("skujur871@gmail.com", "someP@sswr0rd", secondPerson)
+	admin.outputAdminDetails()
 }
