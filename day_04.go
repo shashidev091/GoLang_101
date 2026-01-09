@@ -23,7 +23,7 @@ type Person struct {
 	createdAt time.Time
 }
 
-// Embedding
+// Embedding or Anonymous assigning
 type Admin struct {
 	email    string
 	password string
