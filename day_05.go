@@ -7,6 +7,11 @@ import (
 	"github.com/shashidev091/GoLang_101/day_04/todo"
 )
 
+// interfaces: always give name that ends with "er", this is a design pattern.
+type Saver interface {
+	Save() error
+}
+
 //Types
 
 type str string
