@@ -31,3 +31,11 @@ func getNoteData() (string, string) {
 func getTodoData() string {
 	return getUserInput("Todo text: ")
 }
+
+func saveData(data Saver) error {
+	err := data.SaveFile()
+	if err != nil {
+		fmt.Println("Saving the note failed with the error.")
+	}
+	return nil
+}

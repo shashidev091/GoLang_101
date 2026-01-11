@@ -9,7 +9,7 @@ import (
 
 // interfaces: always give name that ends with "er", this is a design pattern.
 type Saver interface {
-	Save() error
+	SaveFile() error
 }
 
 //Types
@@ -46,10 +46,7 @@ func Day05Main() {
 
 	todo.DisplayTodo()
 
-	err = todo.SaveFile()
-	if err != nil {
-		fmt.Println("Saving the note failed with the error.")
-	}
+	saveData(todo)
 
 	userNote.DisplayNote()
 	err = userNote.SaveFile()
