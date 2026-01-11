@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/shashidev091/GoLang_101/day_04/note"
+	"github.com/shashidev091/GoLang_101/day_04/todo"
 )
 
 //Types
@@ -23,11 +24,26 @@ func Day05Main() {
 
 	title, content := getNoteData()
 
+	todoText := getTodoData()
+	todo, err := todo.New(todoText)
+
+	if err != nil {
+		// fmt.Println(err)
+		panic(err)
+	}
+
 	userNote, err := note.New(title, content)
 
 	if err != nil {
 		fmt.Println(err)
 		return
+	}
+
+	todo.DisplayTodo()
+
+	err = todo.SaveFile()
+	if err != nil {
+		fmt.Println("Saving the note failed with the error.")
 	}
 
 	userNote.DisplayNote()
@@ -36,5 +52,5 @@ func Day05Main() {
 		fmt.Println("Saving the note failed with the error.")
 	}
 
-	fmt.Println("File Saved successfully.")
+	// Interfaces
 }

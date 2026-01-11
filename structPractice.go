@@ -27,3 +27,7 @@ func getNoteData() (string, string) {
 
 	return title, content
 }
+
+func getTodoData() string {
+	return getUserInput("Todo text: ")
+}
