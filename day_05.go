@@ -31,5 +31,10 @@ func Day05Main() {
 	}
 
 	userNote.DisplayNote()
+	err = userNote.SaveFile()
+	if err != nil {
+		fmt.Println("Saving the note failed with the error.")
+	}
 
+	fmt.Println("File Saved successfully.")
 }

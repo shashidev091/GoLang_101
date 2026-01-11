@@ -1,15 +1,18 @@
 package note
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
+	"strings"
 	"time"
 )
 
 type Note struct {
-	title     string
-	content   string
-	createdAt time.Time
+	Title     string
+	Content   string
+	CreatedAt time.Time
 }
 
 func New(title, content string) (Note, error) {
@@ -17,16 +20,26 @@ func New(title, content string) (Note, error) {
 		return Note{}, errors.New("🔴 ➡️ Invalid Input")
 	}
 	return Note{
-		title:     title,
-		content:   content,
-		createdAt: time.Now(),
+		Title:     title,
+		Content:   content,
+		CreatedAt: time.Now(),
 	}, nil
 }
 
 func (note Note) DisplayNote() {
-	fmt.Printf("Your note titled %v has the following content: \n\n %v", note.title, note.content)
+	fmt.Printf("Your note titled %v has the following content: \n\n %v", note.Title, note.Content)
 
-	fmt.Println(note.title)
-	fmt.Println(note.content)
-	fmt.Println(note.createdAt.Format(time.RFC822))
+	fmt.Println(note.Title)
+	fmt.Println(note.Content)
+	fmt.Println(note.CreatedAt.Format(time.RFC822))
+}
+
+func (note Note) SaveFile() error {
+	fileName := strings.ReplaceAll(note.Title, " ", "_")
+	fileName = strings.ToLower(fileName) + ".json"
+	json_text, err := json.MarshalIndent(note, "", "    ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(fileName, json_text, 0644)
 }
