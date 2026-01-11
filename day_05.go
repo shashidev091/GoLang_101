@@ -49,10 +49,7 @@ func Day05Main() {
 	saveData(todo)
 
 	userNote.DisplayNote()
-	err = userNote.SaveFile()
-	if err != nil {
-		fmt.Println("Saving the note failed with the error.")
-	}
+	saveData(userNote)
 
 	// Interfaces
 }
