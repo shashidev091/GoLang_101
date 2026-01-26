@@ -20,6 +20,38 @@ func (text str) log() {
 	fmt.Println(text)
 }
 
+// Any type is allowed function type
+//
+//	func printSomething(value interface{}) {
+//				or,
+func printSomething(value any) {
+	// typedVal, ok := value.(int)
+	// fmt.Println(value)
+	// fmt.Println(typedVal)
+	// fmt.Println(ok)
+	// fmt.Println("==================")
+	switch value.(type) {
+	case int:
+		typedVal, ok := value.(int)
+		fmt.Println(value)
+		fmt.Println(typedVal)
+		fmt.Println(ok)
+		fmt.Println("==================")
+	case string:
+		typedVal, ok := value.(int)
+		fmt.Println(value)
+		fmt.Println(typedVal)
+		fmt.Println(ok)
+		fmt.Println("==================")
+	case float64:
+		typedVal, ok := value.(int)
+		fmt.Println(value)
+		fmt.Println(typedVal)
+		fmt.Println(ok)
+		fmt.Println("==================")
+	}
+}
+
 func Day05Main() {
 	var name str = "This world is nice."
 	// fmt.Println(name)
@@ -52,4 +84,5 @@ func Day05Main() {
 	saveData(userNote)
 
 	// Interfaces
+	printSomething("Sometext")
 }
