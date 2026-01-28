@@ -19,3 +19,28 @@ func someOrange() {
 func addGeneric[T int | float64](a, b T) T {
 	return a + b
 }
+
+// Arrays -> if you are comming from python its a list of data, if you are comming from any static typed languages you already know what Arrays are.
+
+type Product struct {
+	title string
+	id    int
+	price float64
+	tags  []string
+}
+
+func (product *Product) UpdateProduct(title string, id int, price float64, tags []string) {
+	product.title = title
+	product.id = id
+	product.price = price
+	product.tags = tags
+}
+
+func NewProduct(title string, id int, price float64, tags []string) *Product {
+	return &Product{
+		title: title,
+		id:    id,
+		price: price,
+		tags:  tags,
+	}
+}
