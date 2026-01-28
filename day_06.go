@@ -22,6 +22,10 @@ func someOrange() {
 	for i := 0; i < len(sample_array); i++ {
 		fmt.Println(sample_array[i])
 	}
+
+	// Creating slices
+	fmt.Println(sample_array[1:3])
+	fmt.Println(sample_array[:2])
 }
 
 // Generic in GoLang
