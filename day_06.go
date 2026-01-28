@@ -13,6 +13,15 @@ func someOrange() {
 	printSomething(1994)
 	op := addGeneric(10, 20)
 	fmt.Println(op)
+
+	newProduct := NewProduct("some product", 1001, 199.99, []string{"some", "things"})
+	sample_array := []int{1, 20, 3}
+	fmt.Println(*newProduct)
+	fmt.Println(len(sample_array))
+
+	for i := 0; i < len(sample_array); i++ {
+		fmt.Println(sample_array[i])
+	}
 }
 
 // Generic in GoLang
@@ -38,9 +47,9 @@ func (product *Product) UpdateProduct(title string, id int, price float64, tags 
 
 func NewProduct(title string, id int, price float64, tags []string) *Product {
 	return &Product{
-		title: title,
-		id:    id,
-		price: price,
-		tags:  tags,
+		title,
+		id,
+		price,
+		tags,
 	}
 }
